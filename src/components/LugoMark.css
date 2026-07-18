@@ -26,13 +26,14 @@
   transition: opacity 400ms ease, fill 400ms ease, transform 400ms ease;
 }
 
-/* idle: nhịp thở chậm — sống, nhưng chưa làm gì. Đây là dáng của hero. */
-.mark[data-state='idle'] .mark__ringwrap { animation: mark-breathe 5.5s ease-in-out infinite; }
+/* idle: nhịp thở chậm — sống, nhưng chưa làm gì. Đây là dáng của hero.
+   Thở cả DẤU (vòng + chấm cùng lúc) chứ không riêng vòng, để chấm luôn nằm
+   đúng trong khoảng hở; scale riêng vòng sẽ làm chấm lệch khỏi khe. */
+.mark[data-state='idle'] { animation: mark-breathe 5.5s ease-in-out infinite; transform-origin: center; }
 .mark[data-state='idle'] .mark__ring { opacity: 0.45; }
 .mark[data-state='idle'] .mark__dot {
   fill: var(--lugo-accent);
   opacity: 0.9;
-  animation: mark-dot-pulse 5.5s ease-in-out infinite;
 }
 
 /* listening: chấm (bạn) sống dậy — cam, nở ra. Vòng sáng vừa. */
@@ -61,14 +62,11 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
 }
-@keyframes mark-dot-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
 
 /* Chuyển động phải phục vụ, không được ép. Bỏ xoay/thở; trạng thái vẫn đọc
    được qua màu và độ đậm. */
 @media (prefers-reduced-motion: reduce) {
+  .mark,
   .mark__ringwrap,
   .mark__dot {
     animation: none !important;
