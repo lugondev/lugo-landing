@@ -101,9 +101,9 @@
    204.76), rút dash. Chấm luôn ở giữa, nằm trên. */
 @keyframes mark-mouth {
   0%   { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
-  25%  { stroke-dasharray: 155 83.76;  stroke-dashoffset: 0; }
+  25%  { stroke-dasharray: 180 58.76;  stroke-dashoffset: 0; }
   50%  { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
-  75%  { stroke-dasharray: 155 83.76;  stroke-dashoffset: -49.76; }
+  75%  { stroke-dasharray: 180 58.76;  stroke-dashoffset: -24.76; }
   100% { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
 }
 /* Chấm đập theo giọng: nhịp không đều (mạnh rồi nhẹ) cho giống nói thật hơn là
