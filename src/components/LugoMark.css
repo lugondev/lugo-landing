@@ -39,17 +39,26 @@
   opacity: 0.9;
 }
 
-/* listening: chấm (bạn) sống dậy — cam, nở ra. Vòng sáng vừa. */
-.mark[data-state='listening'] .mark__ring { opacity: 0.55; }
+/* listening: BẠN đang nói. Chấm cam đập theo giọng — phồng lên xẹp xuống như
+   mức âm — để đọc rõ là "đang nói", không chỉ là chấm to. Vòng lùi hẳn xuống
+   để chấm là tâm điểm. scale nền 1.4 giữ chấm vẫn to khi tắt chuyển động. */
+.mark[data-state='listening'] .mark__ring { opacity: 0.35; }
 .mark[data-state='listening'] .mark__dot {
   fill: var(--lugo-accent);
   opacity: 1;
-  transform: scale(1.5);
+  transform: scale(1.4);
+  animation: mark-dot-speak 1s ease-in-out infinite;
 }
 
-/* thinking: vòng (Lugo) xoay. Chấm lặng — lượt nói đã xong. */
+/* thinking: vòng (Lugo) xoay như đang xử lý. Chấm (BẠN) VẪN hiện rõ, cam, đứng
+   yên — nó được vẽ SAU nên luôn nằm TRÊN vòng, vòng xoay lướt phía dưới chứ
+   không che. Trước đây chấm bị mờ thành kem 0.35 nên trông như bị vòng nuốt. */
 .mark[data-state='thinking'] .mark__ring { opacity: 0.9; }
 .mark[data-state='thinking'] .mark__ringwrap { animation: mark-spin 1.6s linear infinite; }
+.mark[data-state='thinking'] .mark__dot {
+  fill: var(--lugo-accent);
+  opacity: 1;
+}
 
 /* speaking: vòng cam, thở theo tiếng nói. */
 .mark[data-state='speaking'] .mark__ring {
@@ -64,6 +73,15 @@
 @keyframes mark-breathe {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
+}
+/* Chấm đập theo giọng: nhịp không đều (mạnh rồi nhẹ) cho giống nói thật hơn là
+   một nhịp thở đều. transform-origin đã đặt ở tâm chấm nên nở tại chỗ. */
+@keyframes mark-dot-speak {
+  0%   { transform: scale(1.2); }
+  25%  { transform: scale(1.7); }
+  50%  { transform: scale(1.35); }
+  75%  { transform: scale(1.6); }
+  100% { transform: scale(1.2); }
 }
 
 /* Chuyển động phải phục vụ, không được ép. Bỏ xoay/thở; trạng thái vẫn đọc
