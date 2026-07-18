@@ -65,7 +65,7 @@
 .mark[data-state='thinking'] .mark__dot { fill: var(--lugo-accent); opacity: 1; }
 .mark[data-state='thinking'] .mark__runner {
   opacity: 1;
-  animation: mark-draw 2.2s ease-in-out infinite;
+  animation: mark-draw 2s ease-in-out infinite;
 }
 
 /* speaking: vòng cam, KHOẢNG HỞ khép–mở như đang mở miệng nói. dashoffset chạy
@@ -80,12 +80,15 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
 }
-/* Đường cam→trắng tịnh tiến 2 chiều quanh vòng (thinking): nét vẽ RA hết cung
-   rồi RÚT về, lặp liên tục — mượt, không giật khi lặp. Luôn chừa khoảng hở ở
-   chấm (dash tối đa 204.76, gap tối thiểu 34). */
+/* Loading 2 chiều (thinking): ĐẦU chạy từ A vòng hết cung tới B, giữ ở B, rồi
+   ĐUÔI (A) rút dần tới B — cung co lại và biến mất ở B, lặp lại. offset = dash −
+   204.76 để đầu B luôn đứng yên khi đuôi tiến. Luôn chừa khoảng hở 34 ở chấm;
+   điểm reset B→A nằm ngay khoảng hở cạnh chấm nên gần như không thấy. */
 @keyframes mark-draw {
-  0%, 100% { stroke-dasharray: 0.01 238.75; }
-  50%      { stroke-dasharray: 204.76 34; }
+  0%   { stroke-dasharray: 0.01 238.75; stroke-dashoffset: 0; }
+  42%  { stroke-dasharray: 204.76 34;   stroke-dashoffset: 0; }
+  58%  { stroke-dasharray: 204.76 34;   stroke-dashoffset: 0; }
+  100% { stroke-dasharray: 0.01 238.75; stroke-dashoffset: -204.75; }
 }
 /* Miệng khép–mở (speaking): khe hở giãn từ ~51° tới ~111° rồi thu lại. Với hình
    học này khe giãn ĐỐI XỨNG quanh chấm sẵn ở dashoffset 0 (đã kiểm bằng render),
