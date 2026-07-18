@@ -11,6 +11,12 @@
   --lugo-accent-gradient: linear-gradient(135deg, #ff8a00, #ffc857);
   --lugo-danger: #c9372c;
 
+  /* Màu semantic cho phản hồi (info/success). Chỉ dùng cho trạng thái hệ thống,
+     KHÔNG dùng trang trí — cùng kỷ luật với cam. Đỏ danger ở trên là "error". */
+  --lugo-success: #1f9d55;
+  --lugo-warning: #e8a317;
+  --lugo-info: #2f6df0;
+
   --lugo-bg: var(--lugo-cream);
   --lugo-fg: var(--lugo-ink);
 

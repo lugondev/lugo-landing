@@ -19,6 +19,47 @@ const SWATCHES: { hex: string; name: StringKey }[] = [
   { hex: '#FFC857', name: 'brand.swatch.warm' },
 ]
 
+// Icon phản hồi mang nhận diện LUGO: vòng HỞ + chấm cam "bạn" (giống mark), ký
+// hiệu status ở giữa. Vòng + ký hiệu = màu semantic; chấm luôn cam.
+const STATUS = [
+  { key: 'info', color: 'var(--lugo-info)' },
+  { key: 'success', color: 'var(--lugo-success)' },
+  { key: 'warning', color: 'var(--lugo-warning)' },
+  { key: 'error', color: 'var(--lugo-danger)' },
+] as const
+
+function StatusIcon({ variant, color }: { variant: string; color: string }) {
+  const glyph =
+    variant === 'info' ? (
+      <>
+        <circle cx="48" cy="38" r="4" fill={color} />
+        <line x1="48" y1="49" x2="48" y2="66" stroke={color} strokeWidth="8.5" strokeLinecap="round" />
+      </>
+    ) : variant === 'error' ? (
+      <>
+        <line x1="40" y1="42" x2="58" y2="60" stroke={color} strokeWidth="8.5" strokeLinecap="round" />
+        <line x1="58" y1="42" x2="40" y2="60" stroke={color} strokeWidth="8.5" strokeLinecap="round" />
+      </>
+    ) : variant === 'warning' ? (
+      <>
+        <line x1="48" y1="36" x2="48" y2="56" stroke={color} strokeWidth="8.5" strokeLinecap="round" />
+        <circle cx="48" cy="66" r="4" fill={color} />
+      </>
+    ) : (
+      <polyline points="35,52 45,62 62,44" fill="none" stroke={color} strokeWidth="8.5" strokeLinecap="round" strokeLinejoin="round" />
+    )
+  return (
+    <svg className="status-icon" viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <circle
+        cx="50" cy="50" r="38" fill="none" stroke={color} strokeWidth="9"
+        strokeLinecap="round" strokeDasharray="204.76 34" transform="rotate(-19.4 50 50)"
+      />
+      <circle cx="76.87" cy="23.13" r="6" fill="var(--lugo-accent)" />
+      {glyph}
+    </svg>
+  )
+}
+
 function Lockup({ variant }: { variant: string }) {
   return (
     <span className={`lockup lockup--${variant}`}>
@@ -81,6 +122,22 @@ export function Branding() {
             <Lockup variant="invert" />
           </div>
         </div>
+      </div>
+
+      {/* Icon phản hồi — mang nhận diện LUGO */}
+      <div className="brand-block brand-block--status">
+        <p className="brand-block__label">{t('brand.status.label')}</p>
+        <ul className="status-row">
+          {STATUS.map((s) => (
+            <li key={s.key} className="status">
+              <span className="status__mark">
+                <StatusIcon variant={s.key} color={s.color} />
+              </span>
+              <span className="status__name">{t(`brand.status.${s.key}` as StringKey)}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="status-note">{t('brand.status.note')}</p>
       </div>
 
       {/* Bảng màu chủ đạo */}
