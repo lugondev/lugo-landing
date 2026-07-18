@@ -2,11 +2,91 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Lugo — your own voice assistant, on every device. ESP32, Raspberry Pi, or the browser. Pluggable STT, TTS and LLM. Self-hosted, your data stays yours." />
-    <meta name="theme-color" content="#111111" />
-    <title>Lugo — Trợ lý giọng nói của riêng bạn</title>
+
+    <!-- Primary -->
+    <title>LUGO — Nền tảng AI Companion của riêng mỗi người</title>
+    <meta
+      name="description"
+      content="LUGO biến các mô hình AI thành người đồng hành biết ghi nhớ, giao tiếp, hành động và lớn lên cùng bạn — trên mọi thiết bị, từ trình duyệt tới ESP32 và Raspberry Pi. Mô hình cung cấp trí tuệ, LUGO cung cấp trải nghiệm."
+    />
+    <meta
+      name="keywords"
+      content="AI Companion, trợ lý AI, nền tảng AI, LUGO, voice assistant, trợ lý giọng nói, self-hosted AI, ESP32, Raspberry Pi, AI companion platform"
+    />
+    <meta name="author" content="lugondev" />
+    <link rel="canonical" href="https://lugo.vn/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/brand/logo-icon-ink.png" />
+    <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LUGO" />
+    <meta property="og:title" content="LUGO — Nền tảng AI Companion của riêng mỗi người" />
+    <meta
+      property="og:description"
+      content="Biến các mô hình AI thành người đồng hành biết ghi nhớ, giao tiếp, hành động và lớn lên cùng bạn — trên mọi thiết bị. Mô hình cung cấp trí tuệ, LUGO cung cấp trải nghiệm."
+    />
+    <meta property="og:url" content="https://lugo.vn/" />
+    <meta property="og:image" content="https://lugo.vn/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LUGO — Nền tảng AI Companion. Mô hình cung cấp trí tuệ, LUGO cung cấp trải nghiệm." />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LUGO — Nền tảng AI Companion của riêng mỗi người" />
+    <meta
+      name="twitter:description"
+      content="Biến các mô hình AI thành người đồng hành biết ghi nhớ, giao tiếp, hành động — trên mọi thiết bị. Mô hình cung cấp trí tuệ, LUGO cung cấp trải nghiệm."
+    />
+    <meta name="twitter:image" content="https://lugo.vn/og-image.png" />
+    <meta name="twitter:image:alt" content="LUGO — Nền tảng AI Companion" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://lugo.vn/#org",
+            "name": "LUGO",
+            "url": "https://lugo.vn/",
+            "logo": "https://lugo.vn/brand/logo-icon-ink.png",
+            "description": "Nền tảng AI Companion — biến các mô hình AI thành người đồng hành trên mọi thiết bị.",
+            "founder": { "@type": "Person", "name": "lugondev" },
+            "sameAs": ["https://github.com/lugondev"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://lugo.vn/#website",
+            "url": "https://lugo.vn/",
+            "name": "LUGO — Nền tảng AI Companion",
+            "inLanguage": ["vi", "en"],
+            "publisher": { "@id": "https://lugo.vn/#org" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "LUGO",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Web, Linux, ESP32, Raspberry Pi",
+            "description": "Nền tảng AI Companion: lớp nền biến mô hình AI thành người đồng hành biết ghi nhớ, giao tiếp, hành động và kết nối — chạy trên trình duyệt, Raspberry Pi và ESP32.",
+            "url": "https://lugo.vn/",
+            "publisher": { "@id": "https://lugo.vn/#org" },
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

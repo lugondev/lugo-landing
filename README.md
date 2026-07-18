@@ -51,7 +51,25 @@ src/
     CTA.tsx
 public/
   favicon.svg          the mark on ink, rounded-square
+  og-image.png         1200×630 social preview (see `scripts/gen-og.sh`)
+  robots.txt           crawl rules + sitemap pointer (allows AI crawlers)
+  sitemap.xml          single-page sitemap with vi/en hreflang
   brand/               exported logo kit (see GUIDELINE.md §8)
+```
+
+## SEO
+
+Meta tags, Open Graph / Twitter cards and JSON-LD (`Organization` + `WebSite` +
+`SoftwareApplication`) live in [`index.html`](index.html). Title and description
+also update per language on the client — see the `meta.title` / `meta.description`
+keys in `src/i18n.tsx`. The canonical/OG domain is a placeholder (`https://lugo.vn/`);
+**find-and-replace it** once the real domain is set (in `index.html`, `robots.txt`,
+`sitemap.xml` and `scripts/gen-og.sh`).
+
+Regenerate the social preview after brand/copy tweaks:
+
+```bash
+bash scripts/gen-og.sh   # 1200×630 og-image.{svg,png,jpg} — rasterizes via `sips`
 ```
 
 ## Copy & links

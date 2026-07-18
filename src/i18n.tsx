@@ -138,6 +138,10 @@ export const STRINGS = {
 
     'footer.tagline': 'Nền tảng AI Companion.',
     'footer.rights': 'Một dự án của lugondev.',
+
+    'meta.title': 'LUGO — Nền tảng AI Companion của riêng mỗi người',
+    'meta.description':
+      'LUGO biến các mô hình AI thành người đồng hành biết ghi nhớ, giao tiếp, hành động và lớn lên cùng bạn — trên mọi thiết bị, từ trình duyệt tới ESP32 và Raspberry Pi. Mô hình cung cấp trí tuệ, LUGO cung cấp trải nghiệm.',
   },
   en: {
     'nav.what': 'Companion',
@@ -270,6 +274,10 @@ export const STRINGS = {
 
     'footer.tagline': 'The AI Companion Platform.',
     'footer.rights': 'A project by lugondev.',
+
+    'meta.title': 'LUGO — A personal AI companion for everyone',
+    'meta.description':
+      'LUGO turns AI models into companions that remember, communicate, act and grow with you — across every device, from the browser to ESP32 and Raspberry Pi. Models provide the intelligence, LUGO provides the experience.',
   },
 } as const
 
@@ -294,6 +302,21 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = lang
     window.localStorage.setItem(STORAGE_KEY, lang)
+
+    // Đồng bộ metadata SEO theo ngôn ngữ đang chọn (SPA đổi lang phía client).
+    const strings = STRINGS[lang]
+    document.title = strings['meta.title']
+    const setMeta = (selector: string, content: string) => {
+      const el = document.head.querySelector<HTMLMetaElement>(selector)
+      if (el) el.setAttribute('content', content)
+    }
+    setMeta('meta[name="description"]', strings['meta.description'])
+    setMeta('meta[property="og:title"]', strings['meta.title'])
+    setMeta('meta[property="og:description"]', strings['meta.description'])
+    setMeta('meta[name="twitter:title"]', strings['meta.title'])
+    setMeta('meta[name="twitter:description"]', strings['meta.description'])
+    setMeta('meta[property="og:locale"]', lang === 'vi' ? 'vi_VN' : 'en_US')
+    setMeta('meta[property="og:locale:alternate"]', lang === 'vi' ? 'en_US' : 'vi_VN')
   }, [lang])
 
   const value = useMemo<I18n>(
