@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="120" height="120" role="img" aria-label="LUGO" style="color:#111111">
+<style>.mouth{animation:mouth 1.9s ease-in-out infinite}@keyframes mouth{0%{stroke-dasharray:204.76 34;stroke-dashoffset:0}25%{stroke-dasharray:180 58.76;stroke-dashoffset:0}50%{stroke-dasharray:204.76 34;stroke-dashoffset:0}75%{stroke-dasharray:180 58.76;stroke-dashoffset:-24.76}100%{stroke-dasharray:204.76 34;stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<circle class="mouth" cx="50" cy="50" r="38" fill="none" stroke-width="9" stroke-linecap="round" transform="rotate(-19.4 50 50)" stroke="#ff8a00"/><circle cx="76.87" cy="23.13" r="6" fill="currentColor" opacity=".35"/>
+</svg>
