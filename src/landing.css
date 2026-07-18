@@ -379,6 +379,109 @@ section[id] { scroll-margin-top: 84px; }
 .dev-card__title { margin: 6px 0 0; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
 .dev-card__body { margin: 0; line-height: 1.55; opacity: 0.72; font-size: 0.96rem; }
 
+/* ---- Branding (bộ nhận diện) --------------------------------------------- */
+/* Trong khu vực này logo là MẪU trưng bày (spec sheet), nên tắt nhịp thở idle
+   để mọi hình đứng yên như trên guideline in. */
+.branding .mark[data-state='idle'] { animation: none; }
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  align-items: start;
+}
+.brand-block {
+  border: 1px solid var(--lugo-cream-deep);
+  border-radius: 18px;
+  padding: 26px 26px 30px;
+}
+.brand-block__label {
+  margin: 0 0 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+.brand-block__label--gap { margin-top: 32px; }
+
+/* Ý nghĩa logo — bốn hàng: mẫu logo + giải thích. */
+.meaning-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.meaning { display: flex; gap: 18px; align-items: center; }
+.meaning__mark {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  color: var(--lugo-ink);
+}
+.meaning__title { margin: 0 0 4px; font-size: 1.05rem; font-weight: 700; }
+.meaning__body { margin: 0; font-size: 0.92rem; line-height: 1.5; opacity: 0.72; max-width: 42ch; }
+
+/* Khoảng hở: làm mờ vòng để mắt đọc vào KHE. Chấm giữ nguyên. */
+.meaning--gap .mark__ring { opacity: 0.22; }
+/* Màu sắc: vòng + chấm đều cam, khoe bảng màu chủ đạo. */
+.meaning--color .mark__ring { stroke: var(--lugo-accent); opacity: 1; }
+.meaning--color .mark__dot { opacity: 1; }
+
+/* App icon — ba nền, vòng đơn sắc, chỉ chấm là cam (trừ nền cam thì trắng). */
+.app-icons { display: flex; gap: 16px; }
+.app-icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+}
+.app-icon > .mark { width: 62%; height: 62%; }
+.app-icon--cream { background: var(--lugo-cream); color: var(--lugo-ink); border: 1px solid var(--lugo-cream-deep); }
+.app-icon--ink { background: var(--lugo-ink); color: var(--lugo-cream); }
+.app-icon--accent { background: var(--lugo-accent-gradient); color: #fff; --lugo-accent: #ffffff; }
+
+/* Phiên bản đơn sắc — chấm cam vẫn là điểm màu duy nhất. */
+.mono-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.lockup__mark { width: 26px; height: 26px; display: block; }
+.lockup__word { font-size: 1.05rem; }
+.lockup--ink { color: var(--lugo-ink); border: 1px solid var(--lugo-cream-deep); }
+.lockup--muted { color: #9a938a; border: 1px solid var(--lugo-cream-deep); }
+.lockup--invert { background: var(--lugo-ink); color: var(--lugo-cream); }
+
+/* Bảng màu chủ đạo. */
+.brand-block--palette { margin-top: 20px; }
+.palette {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+.swatch { display: grid; gap: 8px; }
+.swatch__chip {
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--lugo-ink) 10%, transparent);
+}
+.swatch__name { font-size: 0.9rem; font-weight: 600; }
+.swatch__hex { font-size: 0.78rem; opacity: 0.55; letter-spacing: 0.02em; }
+
+@media (max-width: 900px) {
+  .brand-grid { grid-template-columns: 1fr; }
+  .palette { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 520px) {
+  .palette { grid-template-columns: repeat(2, 1fr); }
+  .meaning__mark { width: 48px; height: 48px; }
+}
+
 /* ---- CTA (nền tối) -------------------------------------------------------- */
 .cta { text-align: center; }
 .cta__inner { max-width: 720px; }

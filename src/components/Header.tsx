@@ -29,6 +29,7 @@ export function Header() {
         <a href="#companion">{t('nav.what')}</a>
         {/* <a href="#ecosystem">{t('nav.ecosystem')}</a> tạm ẩn */}
         <a href="#devices">{t('nav.devices')}</a>
+        <a href="#brand">{t('nav.brand')}</a>
       </nav>
 
       <div className="header__actions">

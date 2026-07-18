@@ -8,6 +8,7 @@ import { HowItWorks } from './sections/HowItWorks'
 // import { Ecosystem } from './sections/Ecosystem' // tạm ẩn
 import { Audiences } from './sections/Audiences'
 import { Devices } from './sections/Devices'
+import { Branding } from './sections/Branding'
 import { CTA } from './sections/CTA'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         {/* <Ecosystem /> tạm ẩn */}
         <Audiences />
         <Devices />
+        <Branding />
         <CTA />
       </main>
       <Footer />
