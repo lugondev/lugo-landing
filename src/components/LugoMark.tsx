@@ -47,8 +47,10 @@ export function LugoMark({ state = 'idle' }: { state?: MarkState }) {
           transform={`rotate(${ROT} 50 50)`}
         />
       </g>
-      {/* Cung sáng chạy quanh vòng khi Lugo nghĩ. Nằm DƯỚI chấm (vẽ trước) nên
-          chấm "bạn" luôn ở trên. Chỉ hiện ở state thinking (CSS). */}
+      {/* Đường cam→trắng TỰ VẼ quanh vòng khi Lugo nghĩ (kiểu thanh tiến trình
+          tròn). Nằm cùng cung với vòng nền (dasharray + rotate giống hệt), chừa
+          đúng khoảng hở ở chấm. Vẽ dần bằng cách animate dasharray (CSS). Nằm
+          DƯỚI chấm nên chấm "bạn" luôn ở trên. Chỉ hiện ở state thinking. */}
       <circle
         className="mark__runner"
         cx="50"
@@ -58,7 +60,8 @@ export function LugoMark({ state = 'idle' }: { state?: MarkState }) {
         stroke="url(#lugo-runner)"
         strokeWidth="9"
         strokeLinecap="round"
-        strokeDasharray={`54 ${(CIRC - 54).toFixed(2)}`}
+        strokeDasharray={`${DASH} ${GAP}`}
+        transform={`rotate(${ROT} 50 50)`}
       />
       <circle className="mark__dot" cx={DOT_X} cy={DOT_Y} r="6" />
     </svg>
