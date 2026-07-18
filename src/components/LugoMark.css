@@ -29,6 +29,14 @@
   transition: opacity 400ms ease, fill 400ms ease, transform 400ms ease;
 }
 
+/* Đường chạy: ẩn mặc định, chỉ bật ở thinking. Spin quanh tâm (50,50). */
+.mark__runner {
+  opacity: 0;
+  transform-box: view-box;
+  transform-origin: 50px 50px;
+  transition: opacity 300ms ease;
+}
+
 /* idle: nhịp thở chậm — sống, nhưng chưa làm gì. Đây là dáng của hero.
    Thở cả DẤU (vòng + chấm cùng lúc) chứ không riêng vòng, để chấm luôn nằm
    đúng trong khoảng hở; scale riêng vòng sẽ làm chấm lệch khỏi khe. */
@@ -50,29 +58,39 @@
   animation: mark-dot-speak 1s ease-in-out infinite;
 }
 
-/* thinking: vòng (Lugo) xoay như đang xử lý. Chấm (BẠN) VẪN hiện rõ, cam, đứng
-   yên — nó được vẽ SAU nên luôn nằm TRÊN vòng, vòng xoay lướt phía dưới chứ
-   không che. Trước đây chấm bị mờ thành kem 0.35 nên trông như bị vòng nuốt. */
-.mark[data-state='thinking'] .mark__ring { opacity: 0.9; }
-.mark[data-state='thinking'] .mark__ringwrap { animation: mark-spin 1.6s linear infinite; }
-.mark[data-state='thinking'] .mark__dot {
-  fill: var(--lugo-accent);
+/* thinking: một đường cam→trắng (màu branding) CHẠY quanh vòng — vòng nền mờ đi
+   để đường sáng nổi lên. Chấm "bạn" đứng yên, cam, nằm TRÊN nên không bị che.
+   Đường chạy là <circle> riêng, không có thuộc tính transform, nên spin bằng CSS
+   sạch (khác với .mark__ring vốn đã có rotate ở thuộc tính). */
+.mark[data-state='thinking'] .mark__ring { opacity: 0.18; }
+.mark[data-state='thinking'] .mark__dot { fill: var(--lugo-accent); opacity: 1; }
+.mark[data-state='thinking'] .mark__runner {
   opacity: 1;
+  animation: mark-run 1.4s linear infinite;
 }
 
-/* speaking: vòng cam, thở theo tiếng nói. */
+/* speaking: vòng cam, KHOẢNG HỞ khép–mở như đang mở miệng nói. dashoffset chạy
+   kèm để khe luôn giãn ĐỐI XỨNG quanh chấm, không lệch sang một bên. */
 .mark[data-state='speaking'] .mark__ring {
   stroke: var(--lugo-accent);
   opacity: 1;
+  animation: mark-mouth 1.5s ease-in-out infinite;
 }
-.mark[data-state='speaking'] .mark__ringwrap { animation: mark-breathe 2.4s ease-in-out infinite; }
 
-@keyframes mark-spin {
-  to { transform: rotate(360deg); }
-}
 @keyframes mark-breathe {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
+}
+/* Đường cam chạy quanh vòng (thinking). */
+@keyframes mark-run {
+  to { transform: rotate(360deg); }
+}
+/* Miệng khép–mở (speaking): khe hở giãn từ ~51° tới ~111° rồi thu lại. Với hình
+   học này khe giãn ĐỐI XỨNG quanh chấm sẵn ở dashoffset 0 (đã kiểm bằng render),
+   nên không cần bù offset. */
+@keyframes mark-mouth {
+  0%, 100% { stroke-dasharray: 204.76 34; }
+  50%      { stroke-dasharray: 164.76 74; }
 }
 /* Chấm đập theo giọng: nhịp không đều (mạnh rồi nhẹ) cho giống nói thật hơn là
    một nhịp thở đều. transform-origin đã đặt ở tâm chấm nên nở tại chỗ. */
@@ -89,6 +107,8 @@
 @media (prefers-reduced-motion: reduce) {
   .mark,
   .mark__ringwrap,
+  .mark__ring,
+  .mark__runner,
   .mark__dot {
     animation: none !important;
   }

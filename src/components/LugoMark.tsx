@@ -27,6 +27,13 @@ const ROT = 360 + DOT_ANGLE - GAP_CENTER // ~-19.4
 export function LugoMark({ state = 'idle' }: { state?: MarkState }) {
   return (
     <svg className="mark" data-state={state} viewBox="0 0 100 100" role="img" aria-hidden="true">
+      <defs>
+        {/* Đường cam→trắng cho trạng thái thinking (màu branding). */}
+        <linearGradient id="lugo-runner" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#ff8a00" />
+          <stop offset="1" stopColor="#ffffff" />
+        </linearGradient>
+      </defs>
       <g className="mark__ringwrap">
         <circle
           className="mark__ring"
@@ -40,6 +47,19 @@ export function LugoMark({ state = 'idle' }: { state?: MarkState }) {
           transform={`rotate(${ROT} 50 50)`}
         />
       </g>
+      {/* Cung sáng chạy quanh vòng khi Lugo nghĩ. Nằm DƯỚI chấm (vẽ trước) nên
+          chấm "bạn" luôn ở trên. Chỉ hiện ở state thinking (CSS). */}
+      <circle
+        className="mark__runner"
+        cx="50"
+        cy="50"
+        r={R}
+        fill="none"
+        stroke="url(#lugo-runner)"
+        strokeWidth="9"
+        strokeLinecap="round"
+        strokeDasharray={`54 ${(CIRC - 54).toFixed(2)}`}
+      />
       <circle className="mark__dot" cx={DOT_X} cy={DOT_Y} r="6" />
     </svg>
   )

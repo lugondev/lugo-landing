@@ -59,9 +59,9 @@ export const STRINGS = {
     'how.1.title': 'Bạn nói',
     'how.1.body': 'Chấm sáng cam và nở ra theo giọng bạn. Lugo đang nghe.',
     'how.2.title': 'Lugo nghĩ',
-    'how.2.body': 'Vòng xoay khi Lugo chuyển lời bạn thành ý và soạn câu trả lời.',
+    'how.2.body': 'Một đường sáng chạy quanh vòng khi Lugo biến lời bạn thành ý và soạn câu trả lời.',
     'how.3.title': 'Lugo trả lời',
-    'how.3.body': 'Vòng chuyển cam và thở theo tiếng nói. Rồi tới lượt bạn.',
+    'how.3.body': 'Vòng chuyển cam, khoảng hở khép–mở như đang nói. Rồi tới lượt bạn.',
 
     'eco.eyebrow': 'Hệ sinh thái',
     'eco.title': 'Mười mảnh, một nền tảng.',
@@ -185,9 +185,9 @@ export const STRINGS = {
     'how.1.title': 'You speak',
     'how.1.body': 'The dot lights orange and swells with your voice. Lugo is listening.',
     'how.2.title': 'Lugo thinks',
-    'how.2.body': 'The ring spins as Lugo turns your words into intent and drafts a reply.',
+    'how.2.body': 'A line runs around the ring as Lugo turns your words into intent and drafts a reply.',
     'how.3.title': 'Lugo replies',
-    'how.3.body': 'The ring goes orange and breathes with its voice. Then it’s your turn.',
+    'how.3.body': 'The ring turns orange and its gap opens and closes as it speaks. Then it’s your turn.',
 
     'eco.eyebrow': 'The ecosystem',
     'eco.title': 'Ten parts, one platform.',
