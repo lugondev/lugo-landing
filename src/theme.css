@@ -1,0 +1,58 @@
+/* Bộ nhận diện Lugo — giữ nguyên token từ lugo-web-client. Cam CHỈ dùng cho
+   trạng thái hoạt động và hành động chính; cam dùng cho mọi thứ thì không còn
+   báo hiệu gì. */
+:root {
+  --lugo-ink: #111111;
+  --lugo-ink-soft: #2a2a2a;
+  --lugo-cream: #f7f4ee;
+  --lugo-cream-deep: #e8e1d6;
+  --lugo-accent: #ff8a00;
+  --lugo-accent-warm: #ffc857;
+  --lugo-accent-gradient: linear-gradient(135deg, #ff8a00, #ffc857);
+  --lugo-danger: #c9372c;
+
+  --lugo-bg: var(--lugo-cream);
+  --lugo-fg: var(--lugo-ink);
+
+  /* Landing thêm: nhịp khoảng cách và bề rộng nội dung. */
+  --lugo-maxw: 1120px;
+  --lugo-gutter: clamp(20px, 5vw, 56px);
+  --lugo-section-y: clamp(72px, 12vh, 140px);
+}
+
+/* Nền tối là bản mạnh nhất của bộ nhận diện — dùng cho hero, giống màn Talk. */
+[data-surface='ink'] {
+  --lugo-bg: var(--lugo-ink);
+  --lugo-fg: var(--lugo-cream);
+  --lugo-danger: #ff8a80;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--lugo-bg);
+  color: var(--lugo-fg);
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--lugo-accent-warm);
+  outline-offset: 3px;
+}
