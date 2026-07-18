@@ -73,7 +73,7 @@
 .mark[data-state='speaking'] .mark__ring {
   stroke: var(--lugo-accent);
   opacity: 1;
-  animation: mark-mouth 1.5s ease-in-out infinite;
+  animation: mark-mouth 1.9s ease-in-out infinite;
 }
 
 @keyframes mark-breathe {
@@ -94,12 +94,17 @@
   75%  { stroke-dasharray: 204.76 34;   stroke-dashoffset: 0; }
   100% { stroke-dasharray: 0.01 238.75; stroke-dashoffset: 0; }
 }
-/* Miệng khép–mở (speaking): khe hở giãn từ ~51° tới ~111° rồi thu lại. Với hình
-   học này khe giãn ĐỐI XỨNG quanh chấm sẵn ở dashoffset 0 (đã kiểm bằng render),
-   nên không cần bù offset. */
+/* Miệng nói (speaking): TỪNG ĐẦU mở ra–thu vào LUÂN PHIÊN như đang mấp máy nói.
+   - đóng → đầu B (phía trên-trái chấm) mở ra rồi khép lại
+   - đóng → đầu A (phía dưới-phải chấm) mở ra rồi khép lại
+   Mở đầu B: giữ đầu A (offset 0), rút dash. Mở đầu A: giữ đầu B (offset = dash −
+   204.76), rút dash. Chấm luôn ở giữa, nằm trên. */
 @keyframes mark-mouth {
-  0%, 100% { stroke-dasharray: 204.76 34; }
-  50%      { stroke-dasharray: 164.76 74; }
+  0%   { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
+  25%  { stroke-dasharray: 155 83.76;  stroke-dashoffset: 0; }
+  50%  { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
+  75%  { stroke-dasharray: 155 83.76;  stroke-dashoffset: -49.76; }
+  100% { stroke-dasharray: 204.76 34;  stroke-dashoffset: 0; }
 }
 /* Chấm đập theo giọng: nhịp không đều (mạnh rồi nhẹ) cho giống nói thật hơn là
    một nhịp thở đều. transform-origin đã đặt ở tâm chấm nên nở tại chỗ. */
