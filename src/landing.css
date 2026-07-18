@@ -198,7 +198,6 @@ section[id] { scroll-margin-top: 84px; }
 .legend__swatch--ring {
   background: none;
   border: 2px solid currentColor;
-  opacity: 0.6;
 }
 
 /* ---- Positioning: xếp 3 tầng --------------------------------------------- */

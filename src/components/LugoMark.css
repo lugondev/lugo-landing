@@ -15,9 +15,12 @@
    được coi như CSS transform, nên thêm transform-origin ở đây sẽ đổi tâm xoay và
    làm vòng LỆCH khỏi chấm. Xoay tĩnh để nguyên ở thuộc tính; mọi animation (spin)
    đặt lên .mark__ringwrap là <g> không có thuộc tính transform. */
+/* Vòng ĐẶC theo màu chữ: đen trên nền sáng, trắng/kem trên nền tối — KHÔNG mờ
+   thành xám. Muốn nhấn trạng thái thì đổi màu (cam) hoặc chuyển động, không hạ
+   opacity vòng nữa. */
 .mark__ring {
   stroke: currentColor;
-  opacity: 0.35;
+  opacity: 1;
   transition: opacity 400ms ease, stroke 400ms ease;
 }
 
@@ -40,7 +43,7 @@
    Thở cả DẤU (vòng + chấm cùng lúc) chứ không riêng vòng, để chấm luôn nằm
    đúng trong khoảng hở; scale riêng vòng sẽ làm chấm lệch khỏi khe. */
 .mark[data-state='idle'] { animation: mark-breathe 5.5s ease-in-out infinite; transform-origin: center; }
-.mark[data-state='idle'] .mark__ring { opacity: 0.45; }
+.mark[data-state='idle'] .mark__ring { opacity: 1; }
 .mark[data-state='idle'] .mark__dot {
   fill: var(--lugo-accent);
   opacity: 0.9;
@@ -49,7 +52,7 @@
 /* listening: BẠN đang nói. Chấm cam đập theo giọng — phồng lên xẹp xuống như
    mức âm — để đọc rõ là "đang nói", không chỉ là chấm to. Vòng lùi hẳn xuống
    để chấm là tâm điểm. scale nền 1.4 giữ chấm vẫn to khi tắt chuyển động. */
-.mark[data-state='listening'] .mark__ring { opacity: 0.35; }
+.mark[data-state='listening'] .mark__ring { opacity: 1; }
 .mark[data-state='listening'] .mark__dot {
   fill: var(--lugo-accent);
   opacity: 1;
@@ -57,11 +60,10 @@
   animation: mark-dot-speak 1s ease-in-out infinite;
 }
 
-/* thinking: một đường cam→trắng (màu branding) CHẠY quanh vòng — vòng nền mờ đi
-   để đường sáng nổi lên. Chấm "bạn" đứng yên, cam, nằm TRÊN nên không bị che.
-   Đường chạy là <circle> riêng, không có thuộc tính transform, nên spin bằng CSS
-   sạch (khác với .mark__ring vốn đã có rotate ở thuộc tính). */
-.mark[data-state='thinking'] .mark__ring { opacity: 0.18; }
+/* thinking: đường cam→trắng (màu branding) tự vẽ quanh vòng. ẨN hẳn vòng nền
+   (không để lại vệt xám) — đường loading chạy trên nền, chấm "bạn" đứng yên cam
+   nằm TRÊN. Đường chạy là <circle> riêng, spin/vẽ bằng CSS sạch. */
+.mark[data-state='thinking'] .mark__ring { opacity: 0; }
 .mark[data-state='thinking'] .mark__dot { fill: var(--lugo-accent); opacity: 1; }
 .mark[data-state='thinking'] .mark__runner {
   opacity: 1;
