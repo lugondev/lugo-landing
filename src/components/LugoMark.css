@@ -10,11 +10,14 @@
   transform-box: view-box;
 }
 
+/* KHÔNG đặt transform/transform-origin lên chính .mark__ring: nó đã có thuộc
+   tính transform="rotate(...)" trong SVG. Trên Chrome (SVG2) thuộc tính transform
+   được coi như CSS transform, nên thêm transform-origin ở đây sẽ đổi tâm xoay và
+   làm vòng LỆCH khỏi chấm. Xoay tĩnh để nguyên ở thuộc tính; mọi animation (spin)
+   đặt lên .mark__ringwrap là <g> không có thuộc tính transform. */
 .mark__ring {
   stroke: currentColor;
   opacity: 0.35;
-  transform-box: view-box;
-  transform-origin: 50px 50px;
   transition: opacity 400ms ease, stroke 400ms ease;
 }
 
