@@ -27,7 +27,7 @@ export function Header() {
 
       <nav className="header__nav" aria-label="Sections">
         <a href="#companion">{t('nav.what')}</a>
-        <a href="#ecosystem">{t('nav.ecosystem')}</a>
+        {/* <a href="#ecosystem">{t('nav.ecosystem')}</a> tạm ẩn */}
         <a href="#devices">{t('nav.devices')}</a>
       </nav>
 

@@ -5,7 +5,7 @@ import { Hero } from './sections/Hero'
 import { Positioning } from './sections/Positioning'
 import { Capabilities } from './sections/Capabilities'
 import { HowItWorks } from './sections/HowItWorks'
-import { Ecosystem } from './sections/Ecosystem'
+// import { Ecosystem } from './sections/Ecosystem' // tạm ẩn
 import { Audiences } from './sections/Audiences'
 import { Devices } from './sections/Devices'
 import { CTA } from './sections/CTA'
@@ -19,7 +19,7 @@ export default function App() {
         <Positioning />
         <Capabilities />
         <HowItWorks />
-        <Ecosystem />
+        {/* <Ecosystem /> tạm ẩn */}
         <Audiences />
         <Devices />
         <CTA />
